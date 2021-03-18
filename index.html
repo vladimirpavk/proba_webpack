@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Moja proba</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- <script type="module" src='./dist/bundle.js'></script> -->
+    <!-- <script type="module" src='./main.js'></script> -->
+</head>
+<body>
+    <h1>Hi from page trying to use webpack module bundler...</h1>
+    <h2>My number is <span id="my_number"></span></h2>
+
+    <script>
+        import('./main.js').then(
+            (m)=>{
+                console.log('Module main.js loaded...');
+                console.log(m.MyLuckyNumber);
+            }
+        )
+    </script>
+</body>
+</html>
