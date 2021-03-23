@@ -10,23 +10,33 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/main.js":
-/*!*********************!*\
-  !*** ./src/main.js ***!
-  \*********************/
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"saberi_sa_5\": () => (/* binding */ saberi_sa_5),\n/* harmony export */   \"PavleBroj\": () => (/* binding */ PavleBroj)\n/* harmony export */ });\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n\r\n\r\nconst saberi_sa_5 = (broj)=>{\r\n    return _utils_js__WEBPACK_IMPORTED_MODULE_0__.broj5 + broj;\r\n}\r\n\r\nconst PavleBroj = 7;\n\n//# sourceURL=webpack://proba_webpack/./src/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _simple_src_main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./simple_src/main.js */ \"./simple_src/main.js\");\n\r\n\r\n//console.log(Main.sumWith5(12));\r\ndocument.getElementById('my_number').innerHTML = _simple_src_main_js__WEBPACK_IMPORTED_MODULE_0__.sumWith5(12);\n\n//# sourceURL=webpack://proba_webpack/./index.js?");
 
 /***/ }),
 
-/***/ "./src/utils.js":
-/*!**********************!*\
-  !*** ./src/utils.js ***!
-  \**********************/
+/***/ "./simple_src/main.js":
+/*!****************************!*\
+  !*** ./simple_src/main.js ***!
+  \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"myFunc\": () => (/* binding */ myFunc),\n/* harmony export */   \"broj5\": () => (/* binding */ broj5)\n/* harmony export */ });\nconst myFunc = (text)=>{\r\n    return \"moj text \" + text;\r\n}\r\n\r\nconst broj5 = 5;\n\n//# sourceURL=webpack://proba_webpack/./src/utils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"sumWith5\": () => (/* binding */ sumWith5)\n/* harmony export */ });\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ \"./simple_src/utils.js\");\n\r\n\r\nconst sumWith5 = (a)=>_utils_js__WEBPACK_IMPORTED_MODULE_0__.Sum(_utils_js__WEBPACK_IMPORTED_MODULE_0__.MyNumber5, a);\r\n\r\nconsole.log('Hello from main.js....');\r\n\n\n//# sourceURL=webpack://proba_webpack/./simple_src/main.js?");
+
+/***/ }),
+
+/***/ "./simple_src/utils.js":
+/*!*****************************!*\
+  !*** ./simple_src/utils.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"MyNumber5\": () => (/* binding */ MyNumber5),\n/* harmony export */   \"Sum\": () => (/* binding */ Sum)\n/* harmony export */ });\nconst MyNumber5 = 5;\r\n\r\nconst Sum = (a,b)=>a+b;\r\n\r\nconsole.log('Hello from utils.js...');\n\n//# sourceURL=webpack://proba_webpack/./simple_src/utils.js?");
 
 /***/ })
 
@@ -90,7 +100,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/main.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./index.js");
 /******/ 	
 /******/ })()
 ;

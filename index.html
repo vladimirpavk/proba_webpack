@@ -21,22 +21,27 @@
             }
         )
     </script> -->
-    <script>
-        /* const saberi_sa_2 = (broj)=>{
+   <!--  <script>
+        const saberi_sa_2 = (broj)=>{
             return broj+2;
         }
 
         document.getElementById('my_number').innerHTML = saberi_sa_2(5); */
 
-        window.onload = () => {
+       /*  window.onload = () => {
             import('./bundle.js').then(
                 (m)=>{
+                    console.log('Module loaded...');
                     console.log(m);
                     console.log(m.PavleBroj);
                 }
             )
 
-        }
-    </script>
+        }        
+    </script> -->
+
+
+
+    <script type="module" src="./index.js"></script>   
 </body>
 </html>
