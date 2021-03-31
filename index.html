@@ -11,14 +11,7 @@
     <h2>My number is <span id="my_number"></span></h2>
     
     <!-- <script type="module" src="./bundle.js"></script>    -->
-    <div class="elementsComponent">
-        <div class="inputElement">
-            <label for="arrayElement">Item</label>
-            <input id="arrayElement" name="arrayElement" class="arrayElement" type="text" maxlength="1" size="1"/>
-            <button id="addButton">+</button>                        
-            <label id="errorLabel" class="error">* Value can not be empty...</label>
-        </div>               
-    </div>
+  
 
     <script>
         /* window.onload = () => {
@@ -35,41 +28,5 @@
         )
     }
     </script>    
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
-        .elementsComponent{
-            display: block;
-            margin: auto;
-            width: 300px;
-            border: 1px solid red;
-            font-family: 'Lato', sans-serif;;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        .inputElement{
-            width: fit-content;
-            margin: auto;                       
-        }       
-        .arrayElement{
-            font-family: 'Lato', sans-serif;;
-            font-weight: bold;
-            font-size: 18px;
-            text-align: center;
-            margin-left: 10px;
-        }
-        .error{
-            display: none;
-            color:red;
-        }
-        #addButton{
-            background-color: #f00;
-            color: white;
-            border-radius: 4px;
-            font-size: 14px;     
-            margin-left: 10px;       
-        }
-    </style>
 </body>
 </html>
