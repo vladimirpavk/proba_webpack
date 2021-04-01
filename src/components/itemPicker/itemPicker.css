@@ -1,28 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-.elementsComponent{
-    display: block;
-    margin: auto;
-    width: 300px;
+.elementsComponent{    
+    display: block;  
+    width: fit-content;
     font-family: 'Lato', sans-serif;;
     font-weight: bold;
     font-size: 18px;
 }
+
 .inputElement{
     width: fit-content;
     margin: auto;                       
 }       
+
 .arrayElement{
-    font-family: 'Lato', sans-serif;;
+    font-family: 'Lato', sans-serif;
     font-weight: bold;
     font-size: 18px;
     text-align: center;
     margin-left: 10px;
 }
+
 .error{
     display: none;
     color:red;
 }
+
 #addButton{           
     background-color: #f00;
     color: white;

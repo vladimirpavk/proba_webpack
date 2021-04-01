@@ -1,33 +1,13 @@
-/* import * as Main from './simple_src/main.js';
+import * as ItemPicker from './src/components/itemPicker/itemPicker.js';
+import { elementsArray } from './src/storage/storage.js';
 
-//console.log(Main.sumWith5(12));
-document.getElementById('my_number').innerHTML = Main.sumWith5(12); */
+const rootElement = document.getElementById('root');
 
-let arrayOfElements = [];
+let itemPicker = document.createElement('item-picker');
+itemPicker.addEventListener('itempicked', (eventData)=>{    
+    console.log(eventData.detail);
+})
 
-let inputElement = document.getElementById('arrayElement');
-let addButton = document.getElementById('addButton');
-let errorLabel = document.getElementById('errorLabel');
+console.log(elementsArray);
 
-inputElement.addEventListener('keypress', (eventData)=>{
-    //console.log(eventData);
-    if(eventData.key==='Enter') addValue();
-});
-
-addButton.addEventListener('click', (eventData)=>{
-   addValue();
-});
-
-const addValue = () =>{
-    if(inputElement.value==''){
-        errorLabel.style.display = 'block';
-        inputElement.focus();
-    }
-    else{
-        errorLabel.style.display = 'none';
-        arrayOfElements.push(inputElement.value);
-        inputElement.value='';
-        inputElement.focus();
-        //console.log(arrayOfElements);
-    }
-}
+rootElement.appendChild(itemPicker);
