@@ -15,7 +15,7 @@ itemPicker.addEventListener('itempicked', (eventData)=>{
     let newItem = document.createElement('it-em');
     newItem.setAttribute('value', eventData.detail);
     newItem.addEventListener('item-removed', (eventData)=>{
-        console.log(eventData.detail);
+        console.log(eventData);
     });
     arrayElements.appendChild(newItem);
 });
