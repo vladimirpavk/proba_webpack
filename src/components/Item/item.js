@@ -2,9 +2,11 @@ class Item extends HTMLElement{
 
     #shadowRoot = null;
     #template = null;
-    #value = null;
     #elementLabel = null;
     #removeButton = null;
+
+    #value = null;    
+    #index = 0;
 
     constructor(){
         super();  
@@ -24,6 +26,8 @@ class Item extends HTMLElement{
 
     connectedCallback(){
         this.#value = this.getAttribute('value');
+        this.#index = this.getAttribute('index');
+
         this.defineTemplate();
 
         let rootElement = document.createElement('div');
@@ -38,7 +42,12 @@ class Item extends HTMLElement{
 
         //initialize events
         this.#removeButton.addEventListener('click', (eventData)=>{
-            let itemRemovedEvent = new CustomEvent('item-removed', {detail: this.#value});
+            let itemRemovedEvent = new CustomEvent('item-removed',{
+                detail: {
+                    id: this.#index,
+                    value: this.#value                
+                }                
+            });
             this.dispatchEvent(itemRemovedEvent);
         });
     }
