@@ -3,7 +3,7 @@ import * as Item from './src/components/Item/item.js';
 
 //import { elementsArray } from './src/storage/storage.js';
 //import { storage } from './src/storage/storage.js';
-import * as Storage from './src/storage/storageClass.js';
+import * as Storage from './src/storage/storage.js';
 
 const rootElement = document.getElementById('root');
 let arrayElements = document.createElement('div');

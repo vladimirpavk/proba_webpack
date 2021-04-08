@@ -42,13 +42,12 @@ class Item extends HTMLElement{
 
         //initialize events
         this.#removeButton.addEventListener('click', (eventData)=>{
-            let itemRemovedEvent = new CustomEvent('item-removed',{
+            this.dispatchEvent(new CustomEvent('item-clicked',{
                 detail: {
                     id: this.#index,
                     value: this.#value                
                 }                
-            });
-            this.dispatchEvent(itemRemovedEvent);
+            }));
         });
     }
 }
