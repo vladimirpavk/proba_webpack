@@ -1,3 +1,23 @@
-.elementLabel{}
+#element{
+    /* border: 1px solid green; */
+    margin-left: 5px;
+    margin-right: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    /* padding-left: 5px;
+    padding-right: 5px; */
+    padding: 5px;
+}
 
-.removeButton{}
+.elementLabel{
+    /* border: 1px solid green; */
+}
+
+.removeButton{
+    /* border: 5px solid green; */
+    background-color: red;
+    border: 0px;
+    border-radius: 2px;
+    text-decoration: wavy;
+    font-weight: bold;
+}

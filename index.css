@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.arrayElements{    
+    display: inline-flex;
+   /*  border: 5px solid red; */
+    width: fit-content;
+    height:fit-content;
+    margin-top: 10px;
+}
+
+.contentLabel{
+    font-family: 'Lato', sans-serif;;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}

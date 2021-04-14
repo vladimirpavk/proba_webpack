@@ -19,7 +19,7 @@ class Item extends HTMLElement{
             <link rel='stylesheet', href='./src/components/item/item.css'/>
             <div id="element">
                 <label class="elementLabel">${this.#value}</label>
-                <button class="removeButton">x</button>
+                <button class="removeButton">X</button>
             </div>
         `;        
     }

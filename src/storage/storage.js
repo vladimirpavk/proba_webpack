@@ -37,9 +37,9 @@ class Storage extends HTMLElement{
         );
         this.#storage = [...filteredArray];
 
-        this.dispatchEvent(new CustomEvent('item-removed'), { detail:removedItem });
-        this.dispatchEvent(new CustomEvent('storage-changed'), { detail:this.#storage });
+        this.dispatchEvent(new CustomEvent('item-removed', { detail:removedItem }));
+        this.dispatchEvent(new CustomEvent('storage-changed', { detail:this.#storage }));
     }
 }
 
-window.customElements.define('stor-age', StorageClass);
+window.customElements.define('stor-age', Storage);
