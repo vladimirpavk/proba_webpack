@@ -14,14 +14,36 @@
     <div id='root'>        
     </div>
 
+    <div id="selector">
+        <form id="combSelect">
+            <input type="radio" id="heapPerm" name="combType" value="heapPerm">
+            <label for="heapPerm">Permutate - Recursive</label><br>
+            <input type="radio" id="heapPermIterative" name="combType" value="heapPermIterative">
+            <label for="age2">Permutate - Iterative</label><br>  
+            <input type="radio" id="combine" name="combType" value="combine">
+            <label for="combine">Combine</label><br>
+            <input type="radio" id="combineStrict" name="combType" value="combineStrict">
+            <label for="combineStrict">Combine - Strict</label><br><br>
+            <form id="strictSelect">
+                <input type="radio" id="forward" name="strictForm" value="forward">
+                <label for="forward">forward</label><br>
+                <input type="radio" id="backward" name="strictForm" value="backward">
+                <label for="backward">backward</label><br>
+
+                <label for="length" style="display:inline-block;">Maximum length</label><br>
+                <input style="display:inline-block;" type="number" id="length" name="length" value="5" length="1">                
+            </form>
+        </form>      
+    </div>
+
     <script>      
         window.onload = () => {
-        import('./index.js').then(
-            (m)=>{
-                console.log('Bundle loaded...');
-            }
-        )
-    }
+            import('./index.js').then(
+                (m)=>{
+                    console.log('Bundle loaded...');
+                }
+            )
+        }      
     </script>    
 </body>
 </html>

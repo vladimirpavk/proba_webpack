@@ -14,3 +14,12 @@
     font-size: 18px;
     margin-top: 20px;
 }
+
+#selector{
+    display: none;
+    margin-top: 20px;
+    font-family: 'Lato', sans-serif;;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}

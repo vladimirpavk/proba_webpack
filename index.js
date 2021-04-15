@@ -10,10 +10,18 @@ const rootElement = document.getElementById('root');
 let arrayElements = document.createElement('div');
 arrayElements.setAttribute('class', 'arrayElements');
 
+let combSelectDiv = document.getElementById('selector');
+
 //initialize storage
 let storage = document.createElement('stor-age');
 storage.addEventListener('storage-changed', (eventData)=>{    
     console.log('Storage changed event...', eventData.detail);
+    if(eventData.detail.length!==0){
+        combSelectDiv.style.display = 'block';
+    }
+    else{
+        combSelectDiv.style.display = 'none';
+    }
 });
 storage.addEventListener('item-added', (eventData)=>{
     console.log('Item added to storage...', eventData.detail);
@@ -41,6 +49,24 @@ contentLabel.setAttribute('class', 'contentLabel');
 contentLabel.innerText = 'Selected items:'
 
 rootElement.appendChild(contentLabel);
-
 rootElement.appendChild(arrayElements);
+
+let combSelectForm = document.getElementById('combSelect');
+combSelectForm.addEventListener('change', (eventData)=>{
+    //console.log(eventData.target.value);
+    switch(eventData.target.value){
+        case "heapPerm": {
+            break;
+        }
+        case "heapPermIterative":{
+            break;
+        }
+        case "combine":{
+            break;
+        }
+        case "combineStrict":{
+            break;
+        }
+    }
+});
 
