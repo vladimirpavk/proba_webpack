@@ -16,23 +16,51 @@
 
     <div id="selector">
         <form id="combSelect">
-            <input type="radio" id="heapPerm" name="combType" value="heapPerm">
+            <input type="radio" id="heapPerm" name="combType" value="heapPerm" checked>
             <label for="heapPerm">Permutate - Recursive</label><br>
             <input type="radio" id="heapPermIterative" name="combType" value="heapPermIterative">
             <label for="age2">Permutate - Iterative</label><br>  
             <input type="radio" id="combine" name="combType" value="combine">
             <label for="combine">Combine</label><br>
             <input type="radio" id="combineStrict" name="combType" value="combineStrict">
-            <label for="combineStrict">Combine - Strict</label><br><br>
-            <form id="strictSelect">
-                <input type="radio" id="forward" name="strictForm" value="forward">
+            <label for="combineStrict">Combine - Strict</label>
+            <br>
+            <div id="strictSelect">
+                <input type="radio" id="forward" name="strictForm" value="forward" checked>
                 <label for="forward">forward</label><br>
                 <input type="radio" id="backward" name="strictForm" value="backward">
                 <label for="backward">backward</label><br>
 
-                <label for="length" style="display:inline-block;">Maximum length</label><br>
-                <input style="display:inline-block;" type="number" id="length" name="length" value="5" length="1">                
-            </form>
+                <div style="display:inline-flex;">
+                    <label
+                        for="length"
+                        style="
+                            margin: auto;
+                        ">Maximum length: </label><br>
+                    <input
+                        style="
+                        display:inline-block;
+                        width: 40px;
+                        margin: 10px;
+                        "
+                        type="number"
+                        id="length"
+                        name="length"
+                        value="5"
+                        length="1"
+                        min="1"
+                        max="9"
+                    />                
+                </div>              
+            </div>            
+            <input
+                id="submitButton"
+                type="submit"
+                value="Calculate"
+                style="
+                    font-family: 'Lato', sans-serif;
+                    font-weight: bold;
+                    font-size: 18px;">
         </form>      
     </div>
 

@@ -12,6 +12,8 @@ arrayElements.setAttribute('class', 'arrayElements');
 
 let combSelectDiv = document.getElementById('selector');
 
+let submitButton = document.getElementById('submitButton');
+
 //initialize storage
 let storage = document.createElement('stor-age');
 storage.addEventListener('storage-changed', (eventData)=>{    
@@ -51,10 +53,12 @@ contentLabel.innerText = 'Selected items:'
 rootElement.appendChild(contentLabel);
 rootElement.appendChild(arrayElements);
 
+let strictSelectForm = document.getElementById('strictSelect');
+
 let combSelectForm = document.getElementById('combSelect');
 combSelectForm.addEventListener('change', (eventData)=>{
-    //console.log(eventData.target.value);
-    switch(eventData.target.value){
+    console.log(eventData.target.value);
+   /*  switch(eventData.target.value){
         case "heapPerm": {
             break;
         }
@@ -67,6 +71,27 @@ combSelectForm.addEventListener('change', (eventData)=>{
         case "combineStrict":{
             break;
         }
+    } */    
+    if(eventData.target.value==='combineStrict'){
+        strictSelectForm.style.display = 'block';
+    }
+    else{
+        strictSelectForm.style.display = 'none';
     }
 });
 
+const onFormSubmit = (formData)=>{
+    formData.preventDefault();
+    console.log(formData.target);
+    let newFormData = new FormData(formData.target);
+    //console.log(newFormData.entries());
+    let itt = newFormData.entries();
+    //first entry
+    itt.next();
+    while(!itt.done){
+        console.log(itt.value);
+        itt.next();
+    }
+}
+
+combSelectForm.addEventListener('submit', onFormSubmit);
