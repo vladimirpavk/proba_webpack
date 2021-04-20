@@ -65,8 +65,15 @@
     </div>
 
     <script>      
-        window.onload = () => {
+        /* window.onload = () => {
             import('./index.js').then(
+                (m)=>{
+                    console.log('Bundle loaded...');
+                }
+            )
+        }       */
+        window.onload = () => {
+            import('./bundle.js').then(
                 (m)=>{
                     console.log('Bundle loaded...');
                 }

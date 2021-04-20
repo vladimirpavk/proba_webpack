@@ -1,9 +1,10 @@
 import * as ItemPicker from './src/components/itemPicker/itemPicker.js';
 import * as Item from './src/components/Item/item.js';
-
-//import { elementsArray } from './src/storage/storage.js';
-//import { storage } from './src/storage/storage.js';
 import * as Storage from './src/storage/storage.js';
+
+import * as RandomMath from 'js-combperm';
+
+console.log(RandomMath);
 
 const rootElement = document.getElementById('root');
 
@@ -82,15 +83,26 @@ combSelectForm.addEventListener('change', (eventData)=>{
 
 const onFormSubmit = (formData)=>{
     formData.preventDefault();
-    console.log(formData.target);
-    let newFormData = new FormData(formData.target);
-    //console.log(newFormData.entries());
-    let itt = newFormData.entries();
-    //first entry
-    itt.next();
-    while(!itt.done){
-        console.log(itt.value);
-        itt.next();
+    let newFormData = new FormData(formData.target);   
+    let itt = newFormData.entries();  
+
+    let nextValue = itt.next();    
+    let formObject = {};
+
+    while(!nextValue.done){
+        //console.log(nextValue.value[1]);
+        formObject[nextValue.value[0]] = nextValue.value[1];
+        nextValue = itt.next();                        
+    }
+
+    console.log(formObject);
+}
+
+const dispatchOperation = (dataObject)=>{
+    switch(dataObject){
+        case "dataObject":{
+            break;
+        }
     }
 }
 
