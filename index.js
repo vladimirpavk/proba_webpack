@@ -2,9 +2,9 @@ import * as ItemPicker from './src/components/itemPicker/itemPicker.js';
 import * as Item from './src/components/Item/item.js';
 import * as Storage from './src/storage/storage.js';
 
-import * as RandomMath from 'js-combperm';
+/* import * as RandomMath from 'js-combperm';
 
-console.log(RandomMath);
+console.log(RandomMath); */
 
 const rootElement = document.getElementById('root');
 
@@ -58,7 +58,7 @@ let strictSelectForm = document.getElementById('strictSelect');
 
 let combSelectForm = document.getElementById('combSelect');
 combSelectForm.addEventListener('change', (eventData)=>{
-    console.log(eventData.target.value);
+    //console.log(eventData.target.value);
    /*  switch(eventData.target.value){
         case "heapPerm": {
             break;
@@ -73,7 +73,13 @@ combSelectForm.addEventListener('change', (eventData)=>{
             break;
         }
     } */    
-    if(eventData.target.value==='combineStrict'){
+    if(
+        eventData.target.value==='combineStrict' ||
+        eventData.target.value==="forward" ||
+        eventData.target.value==="backward" ||
+        Number.isInteger(+eventData.target.value)
+        )
+    {
         strictSelectForm.style.display = 'block';
     }
     else{
@@ -95,7 +101,7 @@ const onFormSubmit = (formData)=>{
         nextValue = itt.next();                        
     }
 
-    console.log(formObject);
+    console.log(formObject, storage.container(), storage.containerValues());
 }
 
 const dispatchOperation = (dataObject)=>{

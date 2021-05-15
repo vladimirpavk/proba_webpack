@@ -15,8 +15,8 @@
     </div>
 
     <div id="selector">
-        <form id="combSelect">
-            <input type="radio" id="heapPerm" name="combType" value="heapPerm" checked>
+        <form id="combSelect">            
+            <input type="radio" id="heapPerm" name="combType" value="heapPerm" checked>            
             <label for="heapPerm">Permutate - Recursive</label><br>
             <input type="radio" id="heapPermIterative" name="combType" value="heapPermIterative">
             <label for="age2">Permutate - Iterative</label><br>  
@@ -60,25 +60,25 @@
                 style="
                     font-family: 'Lato', sans-serif;
                     font-weight: bold;
-                    font-size: 18px;">
+                    font-size: 18px;" />
         </form>      
     </div>
 
     <script>      
-        /* window.onload = () => {
+        window.onload = () => {
             import('./index.js').then(
                 (m)=>{
                     console.log('Bundle loaded...');
                 }
             )
-        }       */
-        window.onload = () => {
+        }      
+      /*   window.onload = () => {
             import('./bundle.js').then(
                 (m)=>{
                     console.log('Bundle loaded...');
                 }
             )
-        }      
+        }       */
     </script>    
 </body>
 </html>
