@@ -77,7 +77,8 @@ combSelectForm.addEventListener('change', (eventData)=>{
         eventData.target.value==='combineStrict' ||
         eventData.target.value==="forward" ||
         eventData.target.value==="backward" ||
-        Number.isInteger(+eventData.target.value)
+        Number.isInteger(+eventData.target.value) ||
+        eventData.target.value==="on"
         )
     {
         strictSelectForm.style.display = 'block';
@@ -101,7 +102,34 @@ const onFormSubmit = (formData)=>{
         nextValue = itt.next();                        
     }
 
-    console.log(formObject, storage.container(), storage.containerValues());
+    let newFormObject = {};
+
+    if(formObject.strict){
+        newFormObject = {...formObject, strict: true}
+    }
+    else{
+        newFormObject = {...formObject, strict: false}
+    }
+
+    //console.log(newFormObject, storage.container(), storage.containerValues());
+    let resultArray = [
+        ['a', 'b', 'c', 'd'],
+        ['b', 'a', 'c', 'e'],
+        ['1', '2', '3', '4'],
+        ['f', 'a', '1', '2']
+    ];
+
+    let stringOfArrays = '';
+    resultArray.forEach(element => {
+        stringOfArrays += element+'\n';
+    });
+
+
+    let resultBox = document.getElementById('resultBox');
+
+    resultBox.value = stringOfArrays;
+
+    console.log(resultBox.value);
 }
 
 const dispatchOperation = (dataObject)=>{

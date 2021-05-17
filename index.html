@@ -34,15 +34,12 @@
                 <div style="display:inline-flex;">
                     <label
                         for="length"
-                        style="
-                            margin: auto;
-                        ">Maximum length: </label><br>
+                        style="margin: auto;">Maximum length: </label><br>
                     <input
-                        style="
-                        display:inline-block;
+                        style=
+                        "display:inline-block;
                         width: 40px;
-                        margin: 10px;
-                        "
+                        margin: 10px;"                        
                         type="number"
                         id="length"
                         name="length"
@@ -51,6 +48,8 @@
                         min="1"
                         max="9"
                     />                
+                    <input style="display:inline-block; width: 20px; margin: auto" type="checkbox" name="strict" id="strict">
+                    <label for="strict" style="margin: auto;">strict</label>
                 </div>              
             </div>            
             <input
@@ -63,6 +62,9 @@
                     font-size: 18px;" />
         </form>      
     </div>
+
+    <textarea readonly id="resultBox">
+    </textarea>
 
     <script>      
         window.onload = () => {
