@@ -29,8 +29,20 @@
     margin-left: 30px;
 }
 
+#resultBoxTitle{
+    background-color: rgb(0, 100, 255);
+    color: white;
+    display: block;
+    margin-top: 20px;
+    font-family: 'Lato', sans-serif;;
+    font-weight: bold;
+    font-size: 25px;
+}
+
 #resultBox{
-    height: 300px;
-    border: 1px solid red;
-    width: max-content;
+    height: 300px;    
+    width: fit-content;
+    font-family: 'Lato', sans-serif;;
+    font-weight: bold;
+    font-size: 25px;
 }

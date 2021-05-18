@@ -111,7 +111,25 @@ const onFormSubmit = (formData)=>{
         newFormObject = {...formObject, strict: false}
     }
 
-    //console.log(newFormObject, storage.container(), storage.containerValues());
+    console.log(newFormObject, storage.container(), storage.containerValues());
+
+    switch(newFormObject.combType){
+        case "heapPerm":{
+            break;
+        }
+        case "heapPermIterative":{
+            break;
+        }
+        case "combine":{
+            break;
+        }
+        case "combineStrict":{
+            switch(newFormObject.strict){
+
+            }
+            break;
+        }
+    }
     let resultArray = [
         ['a', 'b', 'c', 'd'],
         ['b', 'a', 'c', 'e'],
