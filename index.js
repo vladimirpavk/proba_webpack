@@ -2,9 +2,7 @@ import * as ItemPicker from './src/components/itemPicker/itemPicker.js';
 import * as Item from './src/components/Item/item.js';
 import * as Storage from './src/storage/storage.js';
 
-/* import * as RandomMath from 'js-combperm';
-
-console.log(RandomMath); */
+import * as RandomMath from 'js-combperm';
 
 const rootElement = document.getElementById('root');
 
@@ -57,22 +55,7 @@ rootElement.appendChild(arrayElements);
 let strictSelectForm = document.getElementById('strictSelect');
 
 let combSelectForm = document.getElementById('combSelect');
-combSelectForm.addEventListener('change', (eventData)=>{
-    //console.log(eventData.target.value);
-   /*  switch(eventData.target.value){
-        case "heapPerm": {
-            break;
-        }
-        case "heapPermIterative":{
-            break;
-        }
-        case "combine":{
-            break;
-        }
-        case "combineStrict":{
-            break;
-        }
-    } */    
+combSelectForm.addEventListener('change', (eventData)=>{  
     if(
         eventData.target.value==='combineStrict' ||
         eventData.target.value==="forward" ||
@@ -111,43 +94,46 @@ const onFormSubmit = (formData)=>{
         newFormObject = {...formObject, strict: false}
     }
 
-    console.log(newFormObject, storage.container(), storage.containerValues());
+    //console.log(newFormObject, storage.container(), storage.containerValues());
+    //open modal dialog
+    let resultArray = [];
 
     switch(newFormObject.combType){
         case "heapPerm":{
+            resultArray = RandomMath.heapPerm(storage.containerValues());
             break;
         }
         case "heapPermIterative":{
+            resultArray = RandomMath.heapPermIterative(storage.containerValues());
             break;
         }
         case "combine":{
+            resultArray = RandomMath.combAll(storage.containerValues(), 'f');
             break;
         }
         case "combineStrict":{
-            switch(newFormObject.strict){
-
-            }
+            //strictForm = forward | backward
+            //length
+            //strict = true | false
+            let strictFormChar = newFormObject.strictForm === forward ? 'f' : 'b';
+            resultArray = RandomMath.combAllStrict(
+                storage.containerValues(),
+                strictFormChar,
+                newFormObject.length,
+                newFormObject.strict);
             break;
         }
     }
-    let resultArray = [
-        ['a', 'b', 'c', 'd'],
-        ['b', 'a', 'c', 'e'],
-        ['1', '2', '3', '4'],
-        ['f', 'a', '1', '2']
-    ];
 
     let stringOfArrays = '';
     resultArray.forEach(element => {
         stringOfArrays += element+'\n';
     });
 
-
     let resultBox = document.getElementById('resultBox');
 
-    resultBox.value = stringOfArrays;
-
-    console.log(resultBox.value);
+    resultBox.value = stringOfArrays;   
+    //close modal dialog
 }
 
 const dispatchOperation = (dataObject)=>{
