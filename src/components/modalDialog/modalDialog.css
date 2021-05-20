@@ -23,8 +23,12 @@
   
   /* The Close Button */
   .close {
-    color: #aaa;
-    float: right;
+    display: block;
+    text-align: right;  
+    top: 5px;
+    right: 5px;
+    z-index: -1;
+    color: #aaa;        
     font-size: 28px;
     font-weight: bold;
   }

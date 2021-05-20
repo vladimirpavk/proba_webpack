@@ -4,6 +4,8 @@ import * as Storage from './src/storage/storage.js';
 
 import * as RandomMath from 'js-combperm';
 
+import * as ModalDialog from './src/components/modalDialog/modalDialog.js';
+
 const rootElement = document.getElementById('root');
 
 let arrayElements = document.createElement('div');
@@ -145,3 +147,8 @@ const dispatchOperation = (dataObject)=>{
 }
 
 combSelectForm.addEventListener('submit', onFormSubmit);
+
+let modal1 = document.getElementById('dialogCalculate');
+modal1.setAttribute('opened', true);
+
+let modal2 = document.getElementById('dialogPopulate');

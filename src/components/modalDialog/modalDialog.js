@@ -2,7 +2,9 @@ class ModalDialog extends HTMLElement{
     _templateHTML = `                
             <div class="modal-content" id="modal_content">
                 <span class="close" id="close">&times;</span>
-                <slot name='slot1'></slot>
+                <div>
+                    <slot name='slot1'></slot>        
+                </div>        
             </div>        
     `;
 
@@ -22,7 +24,7 @@ class ModalDialog extends HTMLElement{
         //styling
         let linkElement = document.createElement('link');
         linkElement.setAttribute('rel', 'stylesheet');
-        linkElement.setAttribute('href', './script/components/common/modalDialog/modalDialog.css');
+        linkElement.setAttribute('href', './src/components/modalDialog/modalDialog.css');
         this._shadowRoot.appendChild(linkElement);
 
         this._template = document.createElement('template');
