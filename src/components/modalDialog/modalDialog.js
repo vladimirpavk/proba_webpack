@@ -49,18 +49,22 @@ class ModalDialog extends HTMLElement{
             //console.log('modal_content');
             event.stopPropagation();
         });
-    }
-
-    _closeDialog(){
-        this._modalDialog.style.display = 'none';
-    }
+    }  
 
     connectedCallback(){        
-        if(!this.hasAttribute('opened')) this._closeDialog();       
+        if(!this.hasAttribute('opened')) this._closeDialog();   
+        
+        if(this.hasAttribute('canclose') && this.getAttribute('canclose')==="false"){
+            this._shadowRoot.getElementById('close').style.display = 'none';
+        }
     }
 
     _openDialog(){
         this._modalDialog.style.display = 'block';
+    }
+    
+    _closeDialog(){
+        this._modalDialog.style.display = 'none';
     }
 
     static get observedAttributes(){

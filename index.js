@@ -2,10 +2,10 @@ import * as ItemPicker from './src/components/itemPicker/itemPicker.js';
 import * as Item from './src/components/Item/item.js';
 import * as Storage from './src/storage/storage.js';
 
-import * as RandomMath from 'js-combperm';
+/* import * as RandomMath from 'js-combperm'; */
 
 import * as ModalDialog from './src/components/modalDialog/modalDialog.js';
-
+import * as ModalSpinner from './src/components/modalSpinner/modalSpinner.js';
 const rootElement = document.getElementById('root');
 
 let arrayElements = document.createElement('div');
@@ -148,7 +148,6 @@ const dispatchOperation = (dataObject)=>{
 
 combSelectForm.addEventListener('submit', onFormSubmit);
 
-let modal1 = document.getElementById('dialogCalculate');
-modal1.setAttribute('opened', true);
-
-let modal2 = document.getElementById('dialogPopulate');
+let modal1 = document.getElementById('dialogPopulate');
+console.log(modal1);
+modal1.open();
