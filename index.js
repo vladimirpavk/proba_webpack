@@ -2,7 +2,7 @@ import * as ItemPicker from './src/components/itemPicker/itemPicker.js';
 import * as Item from './src/components/Item/item.js';
 import * as Storage from './src/storage/storage.js';
 
-/* import * as RandomMath from 'js-combperm'; */
+import * as RandomMath from 'js-combperm';
 
 import * as ModalDialog from './src/components/modalDialog/modalDialog.js';
 import * as ModalSpinner from './src/components/modalSpinner/modalSpinner.js';
@@ -73,7 +73,16 @@ combSelectForm.addEventListener('change', (eventData)=>{
     }
 });
 
+let modal1 = document.getElementById('dialogCalculate');
+
+let modal2 = document.getElementById('dialogPopulate');
+
+let labelCalculate = document.getElementById('calculationTime');
+let labelPopulate = document.getElementById('textAreaPopulationtime');
+
 const onFormSubmit = (formData)=>{
+    modal1.open();
+
     formData.preventDefault();
     let newFormData = new FormData(formData.target);   
     let itt = newFormData.entries();  
@@ -99,6 +108,9 @@ const onFormSubmit = (formData)=>{
     //console.log(newFormObject, storage.container(), storage.containerValues());
     //open modal dialog
     let resultArray = [];
+    console.log('Modal 1 open');
+    
+    let timeCalcStart = performance.now();
 
     switch(newFormObject.combType){
         case "heapPerm":{
@@ -127,27 +139,24 @@ const onFormSubmit = (formData)=>{
         }
     }
 
+    modal1.close();
+    let timeCalcEnd = performance.now();
+    labelCalculate.innerHTML = 'Calculation finished in ' + timeCalcEnd-timeCalcStart + 'ms.';
+    let timePopulateStart = performance.now();
+
     let stringOfArrays = '';
     resultArray.forEach(element => {
         stringOfArrays += element+'\n';
     });
 
     let resultBox = document.getElementById('resultBox');
-
-    resultBox.value = stringOfArrays;   
+    resultBox.value = stringOfArrays;
+    
+    let timePopulateEnd = performance.now();
+    labelPopulate.innerHTML = 'Populate textarea in ' + timePopulateEnd-timePopulateStart + 'ms.';
     //close modal dialog
-}
 
-const dispatchOperation = (dataObject)=>{
-    switch(dataObject){
-        case "dataObject":{
-            break;
-        }
-    }
+    modal1.close();
 }
 
 combSelectForm.addEventListener('submit', onFormSubmit);
-
-let modal1 = document.getElementById('dialogPopulate');
-console.log(modal1);
-modal1.open();

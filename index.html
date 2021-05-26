@@ -62,39 +62,41 @@
                     font-size: 18px;" />
         </form>     
 
+        <label id="calculationTime"></label>
+        <label id="textAreaPopulationtime"></label>
+
         <label id="resultBoxTitle">Result</label>
         <textarea readonly id="resultBox">
         </textarea> 
     </div>
 
-<!--     <mo-dal id="dialogCalculate" canClose="false">
-        <label slot="slot1" class="slot1">
-            Calculating....
+    <modal-spinner id="dialogCalculate">
+        <label class="slot1" slot="text">
+            Calculating results...
         </label>
-        <div class="loader" slot="slot1"></div>
-    </mo-dal> -->  
+    </modal-spinner>
 
     <modal-spinner id="dialogPopulate">
-        <label slot="text">
+        <label class="slot1" slot="text">
             Populating results...
         </label>
     </modal-spinner>
 
     <script>      
-        window.onload = () => {
+     /*    window.onload = () => {
             import('./index.js').then(
                 (m)=>{
                     console.log('Bundle loaded...');
                 }
             )
-        }      
-     /*    window.onload = () => {
+        }       */
+        window.onload = () => {
             import('./bundle.js').then(
                 (m)=>{
                     console.log('Bundle loaded... - bundle.js');
                 }
             )
-        }      */ 
+        }      
     </script>    
 </body>
 </html>
