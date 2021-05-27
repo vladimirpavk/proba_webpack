@@ -47,8 +47,8 @@
     font-size: 25px;
 }
 
-.slot1{   
-    display:block;
+.slot1{      
+    display: none;
     margin:auto;   
     text-align: center;
     background-color:rgb(0, 100, 255);

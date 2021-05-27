@@ -18,7 +18,7 @@ let submitButton = document.getElementById('submitButton');
 //initialize storage
 let storage = document.createElement('stor-age');
 storage.addEventListener('storage-changed', (eventData)=>{    
-    console.log('Storage changed event...', eventData.detail);
+    //console.log('Storage changed event...', eventData.detail);
     if(eventData.detail.length!==0){
         combSelectDiv.style.display = 'block';
     }
@@ -27,13 +27,13 @@ storage.addEventListener('storage-changed', (eventData)=>{
     }
 });
 storage.addEventListener('item-added', (eventData)=>{
-    console.log('Item added to storage...', eventData.detail);
+    //console.log('Item added to storage...', eventData.detail);
 
     let newItem = document.createElement('it-em');
     newItem.setAttribute('index', eventData.detail.id);
     newItem.setAttribute('value', eventData.detail.value);
     newItem.addEventListener('item-clicked', (eventData)=>{
-        console.log(eventData.detail);        
+        //console.log(eventData.detail);        
         storage.removeItem(eventData.detail.id);
         arrayElements.removeChild(newItem);
     });
@@ -80,9 +80,7 @@ let modal2 = document.getElementById('dialogPopulate');
 let labelCalculate = document.getElementById('calculationTime');
 let labelPopulate = document.getElementById('textAreaPopulationtime');
 
-const onFormSubmit = (formData)=>{
-    modal1.open();
-
+const onFormSubmit = (formData)=>{  
     formData.preventDefault();
     let newFormData = new FormData(formData.target);   
     let itt = newFormData.entries();  
@@ -90,8 +88,7 @@ const onFormSubmit = (formData)=>{
     let nextValue = itt.next();    
     let formObject = {};
 
-    while(!nextValue.done){
-        //console.log(nextValue.value[1]);
+    while(!nextValue.done){     
         formObject[nextValue.value[0]] = nextValue.value[1];
         nextValue = itt.next();                        
     }
@@ -108,7 +105,6 @@ const onFormSubmit = (formData)=>{
     //console.log(newFormObject, storage.container(), storage.containerValues());
     //open modal dialog
     let resultArray = [];
-    console.log('Modal 1 open');
     
     let timeCalcStart = performance.now();
 
@@ -138,10 +134,11 @@ const onFormSubmit = (formData)=>{
             break;
         }
     }
-
-    modal1.close();
+ 
     let timeCalcEnd = performance.now();
-    labelCalculate.innerHTML = 'Calculation finished in ' + timeCalcEnd-timeCalcStart + 'ms.';
+    let htmlCalculate = 'Calculated in ' + '<p style="display:inline-block; color:red;">' + (timeCalcEnd-timeCalcStart).toFixed(3) + '</p>' + 'ms.';
+    console.log(htmlCalculate);
+    labelCalculate.innerHTML = htmlCalculate;
     let timePopulateStart = performance.now();
 
     let stringOfArrays = '';
@@ -152,8 +149,11 @@ const onFormSubmit = (formData)=>{
     let resultBox = document.getElementById('resultBox');
     resultBox.value = stringOfArrays;
     
-    let timePopulateEnd = performance.now();
-    labelPopulate.innerHTML = 'Populate textarea in ' + timePopulateEnd-timePopulateStart + 'ms.';
+    let timePopulateEnd = performance.now();  
+    //labelPopulate.innerHTML = 'Populate textarea in ' + timePopulateEnd-timePopulateStart + 'ms.';    
+    console.log('Populated in ', (timePopulateEnd-timePopulateStart).toFixed(3),'ms.');
+
+    //console.log('Populate textarea in ' + timePopulateEnd-timePopulateStart + 'ms.');
     //close modal dialog
 
     modal1.close();
