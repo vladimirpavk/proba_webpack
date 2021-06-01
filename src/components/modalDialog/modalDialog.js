@@ -74,8 +74,10 @@ class ModalDialog extends HTMLElement{
     attributeChangedCallback(name, oldValue, newValue){
         //console.log(name, oldValue, newValue);
         if(name === 'opened'){
-            if(newValue === 'true')
-                this._openDialog();            
+            if(newValue === 'true'){
+                this._openDialog();
+                this.dispatchEvent(new Event('DialogOpened'));
+            }
             else        
                 this._closeDialog();            
         }

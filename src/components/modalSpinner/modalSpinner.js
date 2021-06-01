@@ -1,7 +1,7 @@
 class ModalSpinner extends HTMLElement{
     #templateHTML = `
         <mo-dal canclose="false" id="modal1">           
-            <slot class="slot1" name="text" slot="slot1"></slot>
+            <slot class="slot1" name="text" slot="slot1" id="slot1"></slot>
             <div class="loader" slot="slot1">
         </mo-dal>
     `
@@ -36,6 +36,9 @@ class ModalSpinner extends HTMLElement{
     }
 
     open(){
+        this.#modalDialog.addEventListener('DialogOpened', ()=>{
+            this.dispatchEvent(new Event('DialogOpened'));
+        })        
         this.#modalDialog.setAttribute('opened', 'true');
     }
 

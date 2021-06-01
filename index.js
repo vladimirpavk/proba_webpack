@@ -74,7 +74,6 @@ combSelectForm.addEventListener('change', (eventData)=>{
 });
 
 let modal1 = document.getElementById('dialogCalculate');
-
 let modal2 = document.getElementById('dialogPopulate');
 
 let labelCalculate = document.getElementById('calculationTime');
@@ -82,81 +81,92 @@ let labelPopulate = document.getElementById('textAreaPopulationtime');
 
 const onFormSubmit = (formData)=>{  
     formData.preventDefault();
-    let newFormData = new FormData(formData.target);   
-    let itt = newFormData.entries();  
 
-    let nextValue = itt.next();    
-    let formObject = {};
-
-    while(!nextValue.done){     
-        formObject[nextValue.value[0]] = nextValue.value[1];
-        nextValue = itt.next();                        
-    }
-
-    let newFormObject = {};
-
-    if(formObject.strict){
-        newFormObject = {...formObject, strict: true}
-    }
-    else{
-        newFormObject = {...formObject, strict: false}
-    }
-
-    //console.log(newFormObject, storage.container(), storage.containerValues());
-    //open modal dialog
-    let resultArray = [];
+    console.log('modal1.open()');
+    modal1.addEventListener('DialogOpened', ()=>{
+        console.log('DalogOpened...');
+        let newFormData = new FormData(formData.target);   
+        let itt = newFormData.entries();  
     
-    let timeCalcStart = performance.now();
+        let nextValue = itt.next();    
+        let formObject = {};
+    
+        while(!nextValue.done){     
+            formObject[nextValue.value[0]] = nextValue.value[1];
+            nextValue = itt.next();                        
+        }
+    
+        let newFormObject = {};
+    
+        if(formObject.strict){
+            newFormObject = {...formObject, strict: true}
+        }
+        else{
+            newFormObject = {...formObject, strict: false}
+        }
+    
+        //console.log(newFormObject, storage.container(), storage.containerValues());
+        //open modal dialog
+        let resultArray = [];
+        
+        let timeCalcStart = performance.now();
+    
+        switch(newFormObject.combType){
+            case "heapPerm":{
+                resultArray = RandomMath.heapPerm(storage.containerValues());
+                break;
+            }
+            case "heapPermIterative":{
+                resultArray = RandomMath.heapPermIterative(storage.containerValues());
+                break;
+            }
+            case "combine":{
+                resultArray = RandomMath.combAll(storage.containerValues(), 'f');
+                break;
+            }
+            case "combineStrict":{
+                //strictForm = forward | backward
+                //length
+                //strict = true | false
+                let strictFormChar = newFormObject.strictForm === forward ? 'f' : 'b';
+                resultArray = RandomMath.combAllStrict(
+                    storage.containerValues(),
+                    strictFormChar,
+                    newFormObject.length,
+                    newFormObject.strict);
+                break;
+            }
+        }
+     
+        let timeCalcEnd = performance.now();
+        let htmlCalculate = 'Calculated in ' + '<p style="display:inline-block; color:red;">' + (timeCalcEnd-timeCalcStart).toFixed(3) + '</p>' + 'ms.';
+        labelCalculate.innerHTML = htmlCalculate;
+        let timePopulateStart = performance.now();
+    
+        let stringOfArrays = '';
+        resultArray.forEach(element => {
+            stringOfArrays += element+'\n';
+        });
+    
+        let resultBox = document.getElementById('resultBox');
+        resultBox.value = stringOfArrays;
+        
+        let timePopulateEnd = performance.now();  
+        let htmlTimePopulate = 'Populated in ' +  '<p style="display:inline-block; color:red;">' + (timePopulateEnd - timePopulateStart).toFixed(3) + '</p>' + 'ms.';
+        labelPopulate.innerHTML = htmlTimePopulate;
 
-    switch(newFormObject.combType){
-        case "heapPerm":{
-            resultArray = RandomMath.heapPerm(storage.containerValues());
-            break;
-        }
-        case "heapPermIterative":{
-            resultArray = RandomMath.heapPermIterative(storage.containerValues());
-            break;
-        }
-        case "combine":{
-            resultArray = RandomMath.combAll(storage.containerValues(), 'f');
-            break;
-        }
-        case "combineStrict":{
-            //strictForm = forward | backward
-            //length
-            //strict = true | false
-            let strictFormChar = newFormObject.strictForm === forward ? 'f' : 'b';
-            resultArray = RandomMath.combAllStrict(
-                storage.containerValues(),
-                strictFormChar,
-                newFormObject.length,
-                newFormObject.strict);
-            break;
-        }
-    }
- 
-    let timeCalcEnd = performance.now();
-    let htmlCalculate = 'Calculated in ' + '<p style="display:inline-block; color:red;">' + (timeCalcEnd-timeCalcStart).toFixed(3) + '</p>' + 'ms.';
-    console.log(htmlCalculate);
-    labelCalculate.innerHTML = htmlCalculate;
-    let timePopulateStart = performance.now();
-
-    let stringOfArrays = '';
-    resultArray.forEach(element => {
-        stringOfArrays += element+'\n';
+        modal1.close();
     });
+    modal1.open();   
+}
 
-    let resultBox = document.getElementById('resultBox');
-    resultBox.value = stringOfArrays;
-    
-    let timePopulateEnd = performance.now();  
-    //labelPopulate.innerHTML = 'Populate textarea in ' + timePopulateEnd-timePopulateStart + 'ms.';    
-    console.log('Populated in ', (timePopulateEnd-timePopulateStart).toFixed(3),'ms.');
-
-    //console.log('Populate textarea in ' + timePopulateEnd-timePopulateStart + 'ms.');
-    //close modal dialog
-
-    modal1.close();
+const onFormSubmit2 = (eventData)=>{
+    console.log('Form submit...');
+    eventData.preventDefault();
+    if(!isOpened) modal1.open();
+    else modal1.close();
 }
 
 combSelectForm.addEventListener('submit', onFormSubmit);
+
+let isOpened = false;
